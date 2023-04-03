@@ -7,6 +7,11 @@ import 'keen-slider/keen-slider.min.css'
 import camiseta1 from '../assets/Shirt/1.png'
 import camiseta2 from '../assets/Shirt/2.png'
 import camiseta3 from '../assets/Shirt/3.png'
+import { stripe } from "../lib/stripe";
+import { GetServerSideProps } from "next";
+import Stripe from "stripe";
+
+
 
 export default function Home() {
   const [sliderRef] = useKeenSlider({
@@ -52,4 +57,28 @@ export default function Home() {
       </Product>
       </HomeContainer>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await stripe.products.list({
+    expand: ["data.default_price"]
+  })
+  
+
+  const products = response.data.map(product => {
+    const price = product.default_price as Stripe.Price
+    return {
+        id: product.id,
+        name: product.name,
+        imageUrl: product.images[0],
+        price: price.unit_amount / 100, // vem em centavos, e sempre vai ser melhor assim, para mostrar em tela pegao valor / 100
+        
+    }
+  })
+
+  return{
+    props: {
+      products
+    }
+  }
 }
