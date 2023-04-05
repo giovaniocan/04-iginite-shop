@@ -12,7 +12,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
         return res.status(400).json ({error: 'Price not found'})
     }
 
-    const success_url = `${process.env.NEXT_URL}/sucess`
+    const success_url = `${process.env.NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`
     const cancel_url = `${process.env.NEXT_URL}/`
 
     
