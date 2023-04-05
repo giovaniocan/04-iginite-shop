@@ -30,7 +30,7 @@ export default function Home({products}: HomeProps) {
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map(product => {
         return (
-          <Link  key={product.id} href={`/product/${product.id}`}>
+          <Link  key={product.id} href={`/product/${product.id}`} prefetch={false} > {/* se fica falso, ele precarrega a oagina somente quando passa pelo hover( em lins), se ficar verdadeiros ele pre-carrega todos assim que  aaplicação abre */}
           <Product
               
              
