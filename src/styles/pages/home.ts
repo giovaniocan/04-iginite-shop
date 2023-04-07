@@ -47,6 +47,7 @@ export const Product = styled('div', {
             padding: '0.75rem',
             borderRadius: 4,
             border: 0,
+            cursor: 'pointer',
         },
 
         'strong': {
