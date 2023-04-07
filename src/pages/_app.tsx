@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Image src={logoImg} alt="" />
         <button>
           <Tote color="#8D8D99" size={24} />
+          <p>1</p>
         </button>
       </Header>
       
