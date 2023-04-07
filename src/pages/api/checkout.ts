@@ -22,7 +22,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
         mode: 'payment',
         line_items: [
             {
-                price:priceId,
+                price:priceId,  
                 quantity: 1,
             }
         ]

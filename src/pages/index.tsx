@@ -10,6 +10,8 @@ import { stripe } from "../lib/stripe";
 import { GetStaticProps } from "next";
 import Stripe from "stripe";
 
+import {Tote} from 'phosphor-react'
+
 interface HomeProps{
   products: {
     id: string, 
@@ -44,8 +46,13 @@ export default function Home({products}: HomeProps) {
               <Image  src={product.imageUrl} alt="camiseta 1" width={520} height={400}/>
 
               <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
+                <div>
+                 <strong>{product.name}</strong>
+                 <span>{product.price}</span>
+                </div>
+                <button>
+                  <Tote size={32} color="#fff"  weight="bold"/>
+                </button>
               </footer>
             </Product>
             </Link>

@@ -18,6 +18,7 @@ export const Product = styled('div', {
     justifyContent: 'center',
     overflow: 'hidden', 
 
+
     img:{
         objectFit: 'cover', // faz a imagem caber no container sem distorcer ela
     },
@@ -39,6 +40,14 @@ export const Product = styled('div', {
         transform: 'translateY(110%)',
         opacity:0,
         transition: 'all 0.2s case-in-out',
+        
+
+        button:{
+            background: '$green500',
+            padding: '0.75rem',
+            borderRadius: 4,
+            border: 0,
+        },
 
         'strong': {
             fontSize: '$lg',
@@ -49,6 +58,13 @@ export const Product = styled('div', {
             fontSize: '$xl',
             fontWeight: 'bold',
             color: '$green300',
+        },
+
+        div: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.25rem',
+    
         },
     },
 
