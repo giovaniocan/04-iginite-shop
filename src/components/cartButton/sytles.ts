@@ -3,26 +3,43 @@ import { styled } from "../../styles"
 export const Container = styled('div', {
     
     button:{
-        background: '#202024',
-        border: 0,
-        borderRadius: 4,
-        padding:'0.75rem',
-        cursor: 'pointer',
+      position: 'relative',
+      width: '3rem',
+      height: '3rem',
     
-        p: {
-          background: '$green500',
-          position: 'absolute',
-          padding: '0.4rem',
-          marginTop: '-3.5rem',
-          marginLeft: '1.2rem',
-          borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     
-          fontSize: '1rem',
-          fontWeight: 'bold',
-          color: '$white',
-          
-          
-          
+      backgroundColor: '$gray800',
+      borderRadius: 6,
+      border: 0,
+      cursor: 'pointer',
+    
+      '&:hover': {
+        filter: 'brightness(1.2)',
+      },
+
+      p: {
+        position: 'absolute',
+        width: '1.5rem',
+        height: '1.5rem',
+
+        top: -7,
+        right: -7,
+
+       display: 'flex',
+       alignItems: 'center',
+       justifyContent: 'center',
+
+       backgroundColor: '$green500',
+       outline: '3px solid $gray900',
+       borderRadius: 1000,
+
+       color: '$white',
+       fontSize: '$sm',
+       fontWeight: 'bold',
+
         },
       },
 })
