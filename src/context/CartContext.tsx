@@ -14,19 +14,19 @@ interface ContextType{
 }
 
 interface CatTContextProviderProps{
-    Children: ReactNode
+    children: ReactNode
 }
 
 export const CartContext = createContext({} as ContextType)
 
-export function CartContextProvider({Children}: CatTContextProviderProps){
+export function CartContextProvider({children}: CatTContextProviderProps){
     const [productsInCart, setProductsInCart] = useState<Product[]>([])
 
     return(
         <CartContext.Provider 
         value={{productsInCart}}
         >
-            {Children}
+            {children}
         </CartContext.Provider>
     )
 }
