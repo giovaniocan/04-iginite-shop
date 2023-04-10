@@ -18,20 +18,22 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isSidebarOpen, setSideBarOpen] = useState(false)
   
 
-  function openSideBar(){
+  function handleOpenSideBar(){
     setSideBarOpen(true)
+    console.log('sideBar aberta')
   }
 
-  function closeSideBar(){
+  function handleCloseSideBar(){
     setSideBarOpen(false)
   }
 
   return (
     <CartContextProvider>
+      {isSidebarOpen && <SideBar closeSidebar={handleCloseSideBar}/>}
       <Container>
         <Header>
           <Image src={logoImg} alt="" />
-          <CartButton />
+          <CartButton openSidebar={handleOpenSideBar} />
         </Header>
         
         <Component {...pageProps} />

@@ -1,6 +1,8 @@
+interface SidebarProps{
+    closeSidebar: () => void
+}
 
-
-export function SideBar(){
+export function SideBar({closeSidebar}: SidebarProps){
 
     return (
         <div>
