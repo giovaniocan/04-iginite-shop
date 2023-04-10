@@ -11,6 +11,7 @@ interface Product{
 
 interface ContextType{
     productsInCart: Product[]
+    addToCart: (product: Product) => void
 }
 
 interface CatTContextProviderProps{
@@ -22,9 +23,20 @@ export const CartContext = createContext({} as ContextType)
 export function CartContextProvider({children}: CatTContextProviderProps){
     const [productsInCart, setProductsInCart] = useState<Product[]>([])
 
+    function  addToCart(product: Product){
+
+        const productAlreadyExistInCart = productsInCart.find(item => item.id === product.id)
+
+        if(!productAlreadyExistInCart){
+            setProductsInCart(oldState => [...oldState, product])
+        }
+
+        
+    }
+
     return(
         <CartContext.Provider 
-        value={{productsInCart}}
+        value={{productsInCart, addToCart}}
         >
             {children}
         </CartContext.Provider>
