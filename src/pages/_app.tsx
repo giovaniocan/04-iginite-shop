@@ -6,11 +6,13 @@ import {Tote} from 'phosphor-react'
 
 import { Container, Header } from "../styles/pages/app";
 import Image from "next/image";
-import { CartContextProvider } from "../context/CartContext";
+import { CartContext, CartContextProvider } from "../context/CartContext";
+import { useContext } from "react";
 
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { size} = useContext(CartContext)
   return (
     <CartContextProvider>
       <Container>
@@ -18,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Image src={logoImg} alt="" />
           <button>
             <Tote color="#8D8D99" size={24} />
-            <p>1</p>
+            <p>{size ? size : 0}</p>
           </button>
         </Header>
         

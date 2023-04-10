@@ -12,6 +12,8 @@ interface Product{
 interface ContextType{
     productsInCart: Product[]
     addToCart: (product: Product) => void
+    removeProduct: (id: string) => void
+    size: number
 }
 
 interface CatTContextProviderProps{
@@ -37,9 +39,11 @@ export function CartContextProvider({children}: CatTContextProviderProps){
         setProductsInCart(cartWithoutRemoveOne)
     }
 
+    const size = productsInCart.length
+
     return(
         <CartContext.Provider 
-        value={{productsInCart, addToCart}}
+        value={{productsInCart, addToCart, removeProduct, size}}
         >
             {children}
         </CartContext.Provider>
