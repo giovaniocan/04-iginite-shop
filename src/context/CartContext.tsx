@@ -30,8 +30,11 @@ export function CartContextProvider({children}: CatTContextProviderProps){
         if(!productAlreadyExistInCart){
             setProductsInCart(oldState => [...oldState, product])
         }
+    }
 
-        
+    function removeProduct(id: string){
+        const cartWithoutRemoveOne = productsInCart.filter(product => product.id !== id)
+        setProductsInCart(cartWithoutRemoveOne)
     }
 
     return(
