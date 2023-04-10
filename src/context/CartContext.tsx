@@ -13,7 +13,6 @@ interface ContextType{
     productsInCart: Product[]
     addToCart: (product: Product) => void
     removeProduct: (id: string) => void
-    size: number
 }
 
 interface CatTContextProviderProps{
@@ -23,15 +22,18 @@ interface CatTContextProviderProps{
 export const CartContext = createContext({} as ContextType)
 
 export function CartContextProvider({children}: CatTContextProviderProps){
-    const [productsInCart, setProductsInCart] = useState<Product[]>([])
+      const [productsInCart, setProductsInCart] = useState<Product[]>([]);
 
     function  addToCart(product: Product){
 
         const productAlreadyExistInCart = productsInCart.find(item => item.id === product.id)
-
-        if(!productAlreadyExistInCart){
-            setProductsInCart(oldState => [...oldState, product])
+        
+        if(productAlreadyExistInCart){
+            console.log(productsInCart)
+           return alert('produto ja existe no carrinho')
+            
         }
+        setProductsInCart(oldState => [...oldState, product])
     }
 
     function removeProduct(id: string){
@@ -39,11 +41,11 @@ export function CartContextProvider({children}: CatTContextProviderProps){
         setProductsInCart(cartWithoutRemoveOne)
     }
 
-    const size = productsInCart.length
+    
 
     return(
         <CartContext.Provider 
-        value={{productsInCart, addToCart, removeProduct, size}}
+        value={{productsInCart, addToCart, removeProduct}}
         >
             {children}
         </CartContext.Provider>

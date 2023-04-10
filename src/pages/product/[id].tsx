@@ -5,8 +5,9 @@ import { stripe } from '../../lib/stripe'
 import Stripe from 'stripe'
 import Image from 'next/image'
 import axios from 'axios'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Head from 'next/head'
+import { CartContext } from '../../context/CartContext'
 
 interface ProductProps {
     product: {
@@ -20,8 +21,7 @@ interface ProductProps {
 }
 
 export default function Product( {product}: ProductProps){
-    const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
-    /* const route = useRouter()    caso fosse para uma rota interna*/
+ /*    const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
    async function handleBuyProduct() {
 
         try {
@@ -33,7 +33,7 @@ export default function Product( {product}: ProductProps){
             
             const { checkoutUrl } = response.data
 
-            /* route.push('/checkout') */
+            /* route.push('/checkout') 
 
             window.location.href = checkoutUrl // para fora da nossa aplicação, algo externo
         } catch (error) {
@@ -41,6 +41,13 @@ export default function Product( {product}: ProductProps){
             setIsCreatingCheckoutSession(false)
             alert('Falha ao redirecionar ao checkout !')
         }
+    } */
+
+    const {addToCart} = useContext(CartContext)
+
+    function handleAddToCart(){
+        addToCart(product)
+
     }
 
     return (
@@ -59,8 +66,8 @@ export default function Product( {product}: ProductProps){
 
                     <p>{product.description}</p>
 
-                    <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
-                        Comprar agora
+                    <button /* disabled={isCreatingCheckoutSession} */ onClick={handleAddToCart}>
+                        Colocar na sacola
                     </button>
                 </ProductDateails>
             </ProductContainer>
