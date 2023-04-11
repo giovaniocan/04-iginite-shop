@@ -8,7 +8,7 @@ import { Container, Header } from "../styles/pages/app";
 import Image from "next/image";
 import {  CartContextProvider } from "../context/CartContext";
 import { useState } from "react";
-import { SideBar } from "../components/sidebar";
+import { SideBar } from "../components/SiderBar";
 import { CartButton } from "../components/cartButton";
 
 globalStyles()

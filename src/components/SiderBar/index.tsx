@@ -1,3 +1,5 @@
+import { SidebarContainer } from "./styles"
+
 interface SidebarProps{
     closeSidebar: () => void
 }
@@ -5,8 +7,7 @@ interface SidebarProps{
 export function SideBar({closeSidebar}: SidebarProps){
 
     return (
-        <div>
-            
-        </div>
+        <SidebarContainer>
+        </SidebarContainer>
     )
 }
