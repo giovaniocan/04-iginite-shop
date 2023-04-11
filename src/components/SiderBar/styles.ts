@@ -39,3 +39,85 @@ export const CloseContainer = styled('div', {
 
 
 })
+
+
+export const Content = styled('div', {
+    margin: ' 1.5rem 3rem 3rem 3rem',
+
+})
+
+export const ProductList = styled('div', {
+     display: 'flex',
+     flexDirection:'column',
+     gap: '1.5rem',
+     marginTop: '2rem',
+})
+
+export const Checkout = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: ' auto',
+    padding: '0 3rem 3rem',
+
+})
+
+export const CheckoutInfo = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+})
+
+export const Quantity = styled('div', { 
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    h3: {
+        color: '$gray100',
+        fontSize: '1rem',
+        fontWeight: 400,
+      },
+    
+      span: {
+        color: '$gray300',
+        fontSize: '$md',
+        fontWeight: 400,
+      }
+})
+
+export const Price = styled('div', {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  
+    h3: {
+      color: '$gray100',
+      fontSize: '$md',
+      fontWeight: 700,
+    },
+  
+    span: {
+      color: '$gray300',
+      fontSize: '$xl',
+      fontWeight: 700,
+    }
+})
+
+export const CheckoutButton = styled('button', {
+    border: 0,
+    padding: '1.5rem 0',
+    borderRadius: 8,
+    cursor: 'pointer',
+
+    marginTop:'3.5rem',
+
+    background: '$green500',
+
+    color: '$white',
+    fontSize: '$md',
+    fontWeight: 700,
+
+    '&:hover':{
+        background: '$green300',
+    },
+})

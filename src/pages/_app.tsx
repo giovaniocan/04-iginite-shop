@@ -20,7 +20,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   function handleOpenSideBar(){
     setSideBarOpen(true)
-    console.log('sideBar aberta')
   }
 
   function handleCloseSideBar(){
