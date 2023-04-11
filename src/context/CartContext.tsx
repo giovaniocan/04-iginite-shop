@@ -5,6 +5,7 @@ interface Product{
     name: string
     imageUrl: string
     price: string
+    priceInNumber: number
     description: string
     defaultPriceId: string
 }
@@ -29,7 +30,6 @@ export function CartContextProvider({children}: CatTContextProviderProps){
         const productAlreadyExistInCart = productsInCart.find(item => item.id === product.id)
         
         if(productAlreadyExistInCart){
-            console.log(productsInCart)
            return alert('produto ja existe no carrinho')
             
         }

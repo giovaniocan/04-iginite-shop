@@ -9,6 +9,7 @@ interface ProductCardProps{
 }
 
 export function ProductCard({id, imageUrl, name, price}:ProductCardProps){
+    console.log(price)
     return (
         <CardContainer>
             <ImageContainer>
