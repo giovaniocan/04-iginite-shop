@@ -30,7 +30,7 @@ export function SideBar({closeSidebar}: SidebarProps){
                             id={product.id}
                             imageUrl={product.imageUrl}
                             name={product.name}
-                            price ={product.defaultPriceId}
+                            price ={product.price}
                             />
                         ) )}
                     </ProductList>
