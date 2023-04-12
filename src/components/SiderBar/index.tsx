@@ -12,6 +12,10 @@ export function SideBar({closeSidebar}: SidebarProps){
 
     const {productsInCart} = useContext(CartContext)    
 
+    const totalPrice = productsInCart.reduce((acc, item) => {
+        return acc += item.priceInNumber
+    }, (0))
+
     return (
         <SidebarContainer>
             <CloseContainer>
@@ -41,11 +45,11 @@ export function SideBar({closeSidebar}: SidebarProps){
 
                     <Quantity>
                         <h3>Quantidade</h3>
-                        <span>3 itens</span>
+                        <span>{productsInCart.length}</span>
                     </Quantity>
                     <Price>
                         <h3>Valor Total</h3>
-                        <span>R$ 270,00</span>
+                        <span>R$ {totalPrice.toFixed(2)}</span>
                     </Price>
             </CheckoutInfo>
             <CheckoutButton>

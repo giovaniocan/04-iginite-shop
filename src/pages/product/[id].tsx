@@ -14,6 +14,7 @@ interface ProductProps {
     id: string, 
     name: string, 
     imageUrl: string, 
+    priceInNumber: number,
     price: string, 
     description: string, 
     defaultPriceId: string
@@ -106,6 +107,7 @@ export const getStaticProps: GetStaticProps<any, { id: string}>  = async ({ para
                 }).format(price.unit_amount / 100), // vem em centavos, e sempre vai ser melhor assim, para mostrar em tela pegao valor / 100
                 description: product.description,
                 defaultPriceId: price.id,
+                priceInNumber: price.unit_amount / 100
             }
         },
         revalidate:  60 * 60 *1 // a cada 1 hr
