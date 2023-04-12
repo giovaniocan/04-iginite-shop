@@ -19,19 +19,12 @@ export function SideBar({closeSidebar}: SidebarProps){
 
     async function handleBuyProductsInCart(){
         try {
-            console.log('teste')
-            console.log(productsInCart.map(product => { 
-                return product.defaultPriceId
-              }))
-
             const response = await axios.post('/api/checkout', {
               pricesIds: productsInCart.map(product => {
                 return product.defaultPriceId
               })
             });
             
-            console.log('teste1')
-      
             const { checkoutUrl } = response.data;
       
             window.location.href = checkoutUrl;
