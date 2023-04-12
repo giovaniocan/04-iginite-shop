@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { stripe } from '../../lib/stripe'
 import Stripe from 'stripe'
 import Image from 'next/image'
-import axios from 'axios'
+
 import { useContext, useState } from 'react'
 import Head from 'next/head'
 import { CartContext } from '../../context/CartContext'

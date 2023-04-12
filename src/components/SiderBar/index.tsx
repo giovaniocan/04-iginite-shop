@@ -3,6 +3,7 @@ import { CloseContainer, Content, SidebarContainer, ProductList, CheckoutInfo, Q
 import { X } from 'phosphor-react'
 import { CartContext } from "../../context/CartContext"
 import { ProductCard } from "./ProductCard"
+import axios from 'axios'
 
 interface SidebarProps{
     closeSidebar: () => void
@@ -15,6 +16,28 @@ export function SideBar({closeSidebar}: SidebarProps){
     const totalPrice = productsInCart.reduce((acc, item) => {
         return acc += item.priceInNumber
     }, (0))
+
+    async function handleBuyProductsInCart(){
+
+        try {
+            
+            const response = await axios.post('/api/checkout', {
+                pricesId: productsInCart.map((product) => {
+                    return product.defaultPriceId
+                })
+            })
+
+            const { checkoutUrl } = response.data
+
+            window.location.href = checkoutUrl
+
+        } catch (error) {
+            alert('Falha ao redirecionar ao checkout !')
+        }
+       
+
+
+    }
 
     return (
         <SidebarContainer>
@@ -52,7 +75,7 @@ export function SideBar({closeSidebar}: SidebarProps){
                         <span>R$ {totalPrice.toFixed(2)}</span>
                     </Price>
             </CheckoutInfo>
-            <CheckoutButton>
+            <CheckoutButton onClick={handleBuyProductsInCart}>
                 Finalizar Compra
             </CheckoutButton>
            </Checkout>
