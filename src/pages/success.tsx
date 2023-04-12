@@ -8,13 +8,14 @@ import Head from "next/head";
 
 interface SuccessProps{
     costumerName: string
-    product: {
+
+    products: {
         name:string
         imageUrl: string
-    }
+    }[]
 }
 
-export default function Success({costumerName, product}: SuccessProps){
+export default function Success({costumerName, products}: SuccessProps){
     return (
         <>
             <Head>
@@ -24,12 +25,15 @@ export default function Success({costumerName, product}: SuccessProps){
             <SuccessContainer>
                 <h1>Compra Efetuada</h1>
 
-                <ImageContainer>
-                    <Image src={product.imageUrl} width={120} height={110} alt="" />
+                {products.map( item => (
+                    <ImageContainer>
+                    <Image src={item.imageUrl} width={120} height={110} alt="" />
                 </ImageContainer>
+                ))}
+                
 
                 <p>
-                    Uhuul <strong>{costumerName}</strong>, sua <strong>{product.name}</strong> já está a caminho da sua casa.
+                    Uhuul <strong>{costumerName}</strong>, sua compra de {products.length} camisetas já está a caminho da sua casa.
                 </p>
 
                 <Link href="/">
@@ -51,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
             }
         }
     }
+
     const sessionId = String(query.session_id)
 
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
@@ -58,15 +63,20 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     })
 
     const costumerName = session.customer_details.name
-  const product = session.line_items.data[0].price.product as Stripe.Product
+
+     const products = session.line_items.data.map (item => {
+        return item.price.product 
+     }) as Stripe.Product[]
 
     return {
         props: {
             costumerName,
-            product: {
-                name: product.name,
-                imageUrl: product.images[0],
-            }
+            products: products.map(item => {
+             return   {
+                    name: item.name,
+                    imageUrl: item.images[0],
+                }
+            }) 
         }
     }
 }
