@@ -3,7 +3,8 @@ import { CloseContainer, Content, SidebarContainer, ProductList, CheckoutInfo, Q
 import { X } from 'phosphor-react'
 import { CartContext } from "../../context/CartContext"
 import { ProductCard } from "./ProductCard"
-import axios from 'axios'
+import axios from "axios"
+
 
 interface SidebarProps{
     closeSidebar: () => void
@@ -24,7 +25,7 @@ export function SideBar({closeSidebar}: SidebarProps){
                 return product.defaultPriceId
               })
             });
-            
+
             const { checkoutUrl } = response.data;
       
             window.location.href = checkoutUrl;

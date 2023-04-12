@@ -1,5 +1,7 @@
 import Image from "next/image"
 import { CardContainer, ImageContainer, InfoContainer, RemoveButton } from "./styles"
+import { useContext } from "react"
+import { CartContext } from "../../../context/CartContext"
 
 interface ProductCardProps{
     id: string
@@ -9,6 +11,12 @@ interface ProductCardProps{
 }
 
 export function ProductCard({id, imageUrl, name, price}:ProductCardProps){
+    const {removeProduct} = useContext(CartContext)
+
+    function remove(){
+        removeProduct(id)
+    }
+
     return (
         <CardContainer>
             <ImageContainer>
@@ -18,7 +26,7 @@ export function ProductCard({id, imageUrl, name, price}:ProductCardProps){
             <InfoContainer>
                 <h3>{name}</h3>
                 <h4>{price}</h4>
-                <RemoveButton>Remover</RemoveButton>
+                <RemoveButton onClick={remove}>Remover</RemoveButton>
             </InfoContainer>
         </CardContainer>
     )

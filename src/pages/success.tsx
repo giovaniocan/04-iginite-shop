@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ImageContainer, SuccessContainer } from "../styles/pages/sucess";
+import { ImageContainer, SuccessContainer, Images } from "../styles/pages/sucess";
 import { GetServerSideProps } from "next";
 import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
@@ -23,14 +23,17 @@ export default function Success({costumerName, products}: SuccessProps){
               <meta name="robots" content="noindex" /> {/*não indexa essa pagina*/ }
             </Head>
             <SuccessContainer>
-                <h1>Compra Efetuada</h1>
-
-                {products.map( item => (
-                    <ImageContainer>
-                    <Image src={item.imageUrl} width={120} height={110} alt="" />
-                </ImageContainer>
-                ))}
                 
+                <Images>
+                    {products.map( item => (
+                        <ImageContainer>
+                            <Image src={item.imageUrl} width={120} height={110} alt="" />
+                        </ImageContainer>
+                    ))}
+                </Images>
+                
+                
+                <h1>Compra Efetuada</h1>
 
                 <p>
                     Uhuul <strong>{costumerName}</strong>, sua compra de {products.length} camisetas já está a caminho da sua casa.
