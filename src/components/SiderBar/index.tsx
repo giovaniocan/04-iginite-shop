@@ -18,25 +18,27 @@ export function SideBar({closeSidebar}: SidebarProps){
     }, (0))
 
     async function handleBuyProductsInCart(){
-
         try {
-            
+            console.log('teste')
+            console.log(productsInCart.map(product => { 
+                return product.defaultPriceId
+              }))
+
             const response = await axios.post('/api/checkout', {
-                pricesId: productsInCart.map((product) => {
-                    return product.defaultPriceId
-                })
-            })
-
-            const { checkoutUrl } = response.data
-
-            window.location.href = checkoutUrl
-
-        } catch (error) {
-            alert('Falha ao redirecionar ao checkout !')
-        }
-       
-
-
+              pricesIds: productsInCart.map(product => {
+                return product.defaultPriceId
+              })
+            });
+            
+            console.log('teste1')
+      
+            const { checkoutUrl } = response.data;
+      
+            window.location.href = checkoutUrl;
+          } catch (error) {
+            // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
+            alert('Falha ao redirecionar ao checkout!!!!!!');
+          }
     }
 
     return (
