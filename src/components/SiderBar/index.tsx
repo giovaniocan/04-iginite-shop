@@ -4,6 +4,7 @@ import { X } from 'phosphor-react'
 import { CartContext } from "../../context/CartContext"
 import { ProductCard } from "./ProductCard"
 import { api } from "../../lib/axios"
+import axios from "axios"
 
 
 interface SidebarProps{
@@ -20,7 +21,8 @@ export function SideBar({closeSidebar}: SidebarProps){
 
     async function handleBuyProductsInCart(){
         try {
-            const response = await api.post('/api/checkout', {
+
+            const response = await axios.post('/api/checkout', {
               pricesIds: productsInCart.map(product => {
                 return product.defaultPriceId
               })
@@ -29,9 +31,9 @@ export function SideBar({closeSidebar}: SidebarProps){
             const { checkoutUrl } = response.data;
       
             window.location.href = checkoutUrl;
-          } catch (error) {
+          } catch (err) {
             // Conectar com uma ferramenta de observabilidade (Datadog / Sentry)
-            alert('Falha ao redirecionar ao checkout!!!!!!');
+            alert("Falha ao redirecionar para o checkout!");
           }
     }
 

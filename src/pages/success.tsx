@@ -27,7 +27,7 @@ export default function Success({costumerName, products}: SuccessProps){
                 <Images>
                     {products.map( item => (
                         <ImageContainer>
-                            <Image src={item.imageUrl} width={120} height={110} alt="" />
+                            <Image src={item.imageUrl} width={130} height={120} alt="" />
                         </ImageContainer>
                     ))}
                 </Images>
