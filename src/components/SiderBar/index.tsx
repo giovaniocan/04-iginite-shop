@@ -3,7 +3,7 @@ import { CloseContainer, Content, SidebarContainer, ProductList, CheckoutInfo, Q
 import { X } from 'phosphor-react'
 import { CartContext } from "../../context/CartContext"
 import { ProductCard } from "./ProductCard"
-import axios from "axios"
+import { api } from "../../lib/axios"
 
 
 interface SidebarProps{
@@ -20,7 +20,7 @@ export function SideBar({closeSidebar}: SidebarProps){
 
     async function handleBuyProductsInCart(){
         try {
-            const response = await axios.post('/api/checkout', {
+            const response = await api.post('/api/checkout', {
               pricesIds: productsInCart.map(product => {
                 return product.defaultPriceId
               })

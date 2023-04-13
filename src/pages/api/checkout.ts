@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "../../lib/stripe";
 
 interface Request{
-    pricesIds: string[]
+    pricesIds: string[] 
 }
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {
